@@ -43,6 +43,7 @@ def lexer(filecontents):
         elif token == ')':
             if mode == 2:
                 tokens.append(number)
+                tokens.append(None)
                 mode = 0
                 token = ''
                 number = ''
@@ -71,6 +72,11 @@ def parse(tokens):
         elif mode == 1:
             print item
             mode = 0
+        elif item == 'ADD':
+            mode = 2
+        elif mode == 2:
+
+
         
 
 def run():
