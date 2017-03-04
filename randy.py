@@ -55,7 +55,7 @@ def lexer(filecontents):
                 token = ''
             elif mode == 1:
                 tokens.append(string)
-                string = ''
+                string = '' 
                 token = ''
                 mode = 0
         elif mode == 1:
@@ -66,18 +66,21 @@ def lexer(filecontents):
 def parse(tokens):
     print tokens
     mode = 0
+    runningAdditionTotal = 0
     for item in tokens:
         if item == 'PRINT:':
             mode = 1
         elif mode == 1:
             print item
             mode = 0
-        elif item == 'ADD':
+        elif item == 'ADD:':
             mode = 2
         elif mode == 2:
-
-
-        
+            if item == None:
+                print runningAdditionTotal
+                mode = 0
+            else:
+            	runningAdditionTotal += int(item)
 
 def run():
     data = open_file(argv[1])#call function openfile on file called in args
